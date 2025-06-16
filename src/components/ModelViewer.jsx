@@ -61,8 +61,8 @@ export default function ModelViewer() {
     <>
       {/* Controls Panel */}
       <div style={styles.panel}>
-        <h3 style={{ marginBottom: '10px', fontSize: '16px' }}>🎨 Customize Model</h3>
-        <label style={{ fontWeight: 'bold', fontSize: '14px' }}>Pick Dress Color:</label><br />
+        <h3 style={styles.title}>🎨 Customize Model</h3>
+        <label style={styles.label}>Pick Dress Color:</label>
         <input
           type="color"
           value={tempColor}
@@ -93,33 +93,45 @@ export default function ModelViewer() {
 const styles = {
   panel: {
     position: 'absolute',
-    top: 20,
+    bottom: 20,
     left: 20,
     zIndex: 10,
-    background: 'rgba(255, 255, 255, 0.9)',
+    background: 'rgba(255, 255, 255, 0.95)',
     padding: '16px',
     borderRadius: '12px',
     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
     fontFamily: 'sans-serif',
-    maxWidth: '90vw',
-    width: 'fit-content',
+    width: 'calc(100vw - 40px)',
+    maxWidth: '340px',
+  },
+  title: {
+    marginBottom: '10px',
+    fontSize: '16px',
+    fontWeight: 'bold',
+  },
+  label: {
+    fontWeight: 'bold',
+    fontSize: '14px',
   },
   colorPicker: {
-    margin: '10px 0',
+    marginTop: '8px',
     width: '100%',
     height: '40px',
-    border: 'none',
-    background: 'transparent',
+    borderRadius: '6px',
+    border: '1px solid #ccc',
+    padding: '4px',
+    backgroundColor: '#fff',
     cursor: 'pointer',
   },
   buttonContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
     gap: '10px',
-    marginTop: '10px',
+    marginTop: '12px',
   },
   button: {
-    padding: '10px 16px',
+    width: '100%',
+    padding: '10px',
     fontSize: '14px',
     fontWeight: 'bold',
     borderRadius: '8px',
@@ -127,6 +139,5 @@ const styles = {
     background: '#007bff',
     color: 'white',
     cursor: 'pointer',
-    flex: '1 1 30%',
   },
 };
