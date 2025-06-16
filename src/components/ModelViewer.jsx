@@ -60,44 +60,20 @@ export default function ModelViewer() {
   return (
     <>
       {/* Controls Panel */}
-      <div style={{
-        position: 'absolute',
-        top: 20,
-        left: 20,
-        zIndex: 10,
-        background: 'rgba(255, 255, 255, 0.8)',
-        padding: '16px',
-        borderRadius: '12px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        fontFamily: 'sans-serif',
-      }}>
-        <h3 style={{ marginBottom: '10px' }}>🎨 Customize Model</h3>
-        <label style={{ fontWeight: 'bold' }}>Pick Dress Color:</label><br />
+      <div style={styles.panel}>
+        <h3 style={{ marginBottom: '10px', fontSize: '16px' }}>🎨 Customize Model</h3>
+        <label style={{ fontWeight: 'bold', fontSize: '14px' }}>Pick Dress Color:</label><br />
         <input
           type="color"
           value={tempColor}
           onChange={(e) => setTempColor(e.target.value)}
-          style={{ margin: '8px 0' }}
+          style={styles.colorPicker}
         />
-        <br />
-        <button
-          onClick={handleApplyColor}
-          style={buttonStyle}
-        >
-          OK
-        </button>
-        <button
-          onClick={() => setIsRotating(true)}
-          style={buttonStyle}
-        >
-          Rotate
-        </button>
-        <button
-          onClick={() => setIsRotating(false)}
-          style={buttonStyle}
-        >
-          Move
-        </button>
+        <div style={styles.buttonContainer}>
+          <button onClick={handleApplyColor} style={styles.button}>OK</button>
+          <button onClick={() => setIsRotating(true)} style={styles.button}>Rotate</button>
+          <button onClick={() => setIsRotating(false)} style={styles.button}>Move</button>
+        </div>
       </div>
 
       {/* 3D Canvas */}
@@ -113,17 +89,44 @@ export default function ModelViewer() {
   );
 }
 
-// Button styling
-const buttonStyle = {
-  marginTop: '10px',
-  marginRight: '10px',
-  padding: '8px 16px',
-  fontSize: '14px',
-  fontWeight: 'bold',
-  borderRadius: '8px',
-  border: 'none',
-  background: '#007bff',
-  color: 'white',
-  cursor: 'pointer',
+// Responsive styles
+const styles = {
+  panel: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 10,
+    background: 'rgba(255, 255, 255, 0.9)',
+    padding: '16px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    fontFamily: 'sans-serif',
+    maxWidth: '90vw',
+    width: 'fit-content',
+  },
+  colorPicker: {
+    margin: '10px 0',
+    width: '100%',
+    height: '40px',
+    border: 'none',
+    background: 'transparent',
+    cursor: 'pointer',
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '10px',
+    marginTop: '10px',
+  },
+  button: {
+    padding: '10px 16px',
+    fontSize: '14px',
+    fontWeight: 'bold',
+    borderRadius: '8px',
+    border: 'none',
+    background: '#007bff',
+    color: 'white',
+    cursor: 'pointer',
+    flex: '1 1 30%',
+  },
 };
-
